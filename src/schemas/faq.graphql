@@ -1,0 +1,56 @@
+type faq {
+  _id: ID!
+  question: String
+  answer: String
+  description: String
+  tagTitle: String
+  tagIds: String
+  isDeleted: Boolean
+  isVisible: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input faqInput {
+  question: String
+  answer: String
+  description: String
+  tagTitle: String
+  tagIds: String
+  isDeleted: Boolean
+  isVisible: Boolean
+}
+input updateFaqInput {
+  _id: ID!
+  question: String
+  answer: String
+  description: String
+  tagTitle: String
+  tagIds: String
+  isDeleted: Boolean
+  isVisible: Boolean
+}
+type updateFaqPayload {
+  message: String
+  status: Boolean
+  updatedFaq: faq
+}
+type FaqPayload {
+  totalCount: Int
+  Faqs: [faq]
+}
+type Mutation {
+  createFaq(input: faqInput): faq
+  deleteFaq(_id: ID!): Boolean
+  updateFaq(input: updateFaqInput): updateFaqPayload
+}
+
+type Query {
+  getAllFaqs(
+    itemPerPage: Int
+    PageNumber: Int
+    tagIds: String
+    searchQuery: String
+  ): FaqPayload
+  getFaqsById(_id: ID!): faq
+}

@@ -1,0 +1,39 @@
+type CompanyDirectory {
+  _id: ID!
+  name: String
+  post: String
+  email: String
+  phone: String
+  extension: Int
+}
+input companyDirectoryInput {
+  name: String
+  post: String
+  email: String
+  phone: String
+  extension: Int
+}
+type CompanyDirectoryPayload {
+  totalCount: Int
+  data: [CompanyDirectory]
+}
+type updateDirectoryPayload {
+  message: String
+  status: Boolean
+  data: CompanyDirectory
+}
+type Mutation {
+  createCompanyDirectory(input: companyDirectoryInput): CompanyDirectory
+  updateCompanyDirectory(
+    _id: ID!
+    input: companyDirectoryInput
+  ): updateDirectoryPayload
+  deleteCompanyDirectory(_id: ID!): Boolean
+}
+type Query {
+  listCompanyDirectory(
+    itemPerPage: Int
+    PageNumber: Int
+    searchQuery: String
+  ): CompanyDirectoryPayload
+}

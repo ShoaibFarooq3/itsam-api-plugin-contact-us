@@ -1,0 +1,42 @@
+type contactDetails {
+  _id: ID!
+  name: String
+  address: String
+  country: String
+  city: String
+  telephoneNumber: String
+  faxNumber: String
+  email: String
+  website: String
+}
+
+input contactDetailsInput {
+  name: String
+  address: String
+  country: String
+  city: String
+  telephoneNumber: String
+  faxNumber: String
+  email: String
+  website: String
+}
+type ListContactPayload {
+  totalCount: Int
+  data: [contactDetails]
+}
+type updateContactDetailPayload {
+  status: String
+  message: String
+  data: contactDetails
+}
+type Mutation {
+  createContactDetails(input: contactDetailsInput): contactDetails
+  updateContactDetails(
+    input: contactDetailsInput
+    _id: ID!
+  ): updateContactDetailPayload
+  deleteContactDetails(_id:ID!): Boolean
+}
+type Query {
+  listContactDetails(itemPerPage: Int, PageNumber: Int): ListContactPayload
+}

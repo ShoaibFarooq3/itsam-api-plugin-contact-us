@@ -1,0 +1,12 @@
+input contactUsInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  Industry: String!
+  Applications: String!
+  emailMessage: String!
+}
+
+extend type Mutation {
+  contactUs(input: contactUsInput!): Boolean
+}
