@@ -2,7 +2,7 @@
   "name": "@shoaibfarooq3/itsam-api-plugin-contact-us",
   "description": "Plugin for contact us form",
   "label": "ContactUs Plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "type": "module",
   "engines": {
